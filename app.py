@@ -1,9 +1,12 @@
 from flask import Flask, render_template, request
 from json_parse import get_users_data, get_user_info
-from followers_map import get_locations_dict, create_map
+from followers_map import get_coordinates, create_map
 from get_twitter_user import get_json
 
 app = Flask(__name__)
+
+app.jinja_env.auto_reload = True
+app.config['TEMPLATES_AUTO_RELOAD'] = True
 
 
 @app.route('/')
@@ -23,10 +26,10 @@ def get_account():
         get_json(account)
         users = get_users_data('followers.json')
         data = get_user_info(users, 'name', 'location', 'profile_image_url')
-        locations = get_locations_dict(data)
-        create_map(data, locations)
+        get_coordinates(data)
+        create_map(data)
         return render_template('Followers.html')
 
 
 if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0', port=8080)
+    app.run()

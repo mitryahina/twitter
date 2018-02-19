@@ -3,9 +3,9 @@
 import json
 
 
-def get_users_data(file_path, n=50, key='users'):
+def get_users_data(file_path, n=20, key='users'):
     """
-    Function, to get list of dictionaies from the json
+    Function, to get list of dictionaries from the json
     :param n: the quantity of the followers
     :param key: by default used to get users section from json
     :return: the list of dictionaries about users

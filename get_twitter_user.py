@@ -17,7 +17,7 @@ def get_json(account):
     ctx.verify_mode = ssl.CERT_NONE
 
     url = twurl.augment(TWITTER_URL,
-                        {'screen_name': account, 'count': '50'})
+                        {'screen_name': account, 'count': '20'})
     connection = urllib.request.urlopen(url, context=ctx)
     data = connection.read().decode()
 
